@@ -1,0 +1,25 @@
+<section class="menu container mx-auto py-8">
+    <h1 class="text-xl font-bold mb-8">Our Products</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16">
+        <% products.forEach(function(product) { %>
+            <div class="w-full md:w-64 mb-4">
+                <a href="/<%= product.name %>">
+                    <img class="h-64 mb-4 mx-auto" src="<%= product.image %>" alt="">
+                </a>
+                <div class="text-center">
+                    <h2 class="mb-4 text-lg">
+                        <%= product.name %>
+                    </h2>
+                    <div class="flex items-center justify-around mt-6">
+                        <span class="font-bold text-lg">₹<%= product.price %></span>
+                        <button onclick="addCart('<%= product._id %>')" data-pizza="<%= JSON.stringify(product) %>"
+                            class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+</section>
