@@ -7,6 +7,16 @@ router.get("/create", async (req, res) => {
   res.render("product/create");
 });
 router.get("/", async (req, res) => {
+  const { search } = req.query;
+  if (!search) {
+    return res.send(await productService.getAll());
+  }
+  console.log("search", search);
+  const product = await productService.find(search);
+  res.send(product);
+});
+
+router.get("/", async (req, res) => {
   const products = await productService.getAll();
   return res.send(products);
 });

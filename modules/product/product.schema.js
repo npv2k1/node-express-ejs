@@ -7,5 +7,6 @@ const productSchema = new Schema({
   price: { type: Number, required: true },
   image: { type: String, required: true },
 });
+// productSchema.indexes({ name: "text", description: "text" });
 
 module.exports = mongoose.model("Product", productSchema);

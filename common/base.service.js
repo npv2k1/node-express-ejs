@@ -1,3 +1,5 @@
+const { ObjectId } = require("mongodb");
+
 module.exports = class BaseService {
   /**
    * The constructor function is a special function that is called when a new instance of the class is
@@ -13,7 +15,7 @@ module.exports = class BaseService {
   }
 
   async getById(id) {
-    return await this.model.findById(id);
+    return await this.model.findById(new ObjectId(id));
   }
 
   async create(product) {

@@ -16,6 +16,11 @@ class CartService extends BaseService {
   async getByUser(userId){
     return await Cart.find({user: userId}).populate("product")
   }
+
+  async deleteCart(userId){
+    return await Cart.deleteMany({ user: userId });
+  }
+
 }
 
 module.exports = new CartService();

@@ -40,11 +40,11 @@
             </div>
             <ul class="hidden sm:flex lg:flex xl:flex items-center ul">
                 <li class="ml-4 text-xl"><a href="/">Home</a></li>
-                <li class="ml-4 text-xl"><a href="product">Product</a></li>
+                <li class="ml-4 text-xl"><a href="/product">Product</a></li>
 
                 <% if(user) { %>
                     <li class="">
-                    <li class="ml-4 text-xl"><a href="/customer/orders">Orders</a></li>
+                    <li class="ml-4 text-xl"><a href="/order">Orders</a></li>
                     <form id="logout" action="/logout" method="POST">
                         <a class="ml-4 text-xl" onclick="document.getElementById('logout').submit()" href="#">Logout</a>
                     </form>
@@ -53,12 +53,12 @@
                     </li>
                     </li>
                     <% } else { %>
-                        <li class="ml-4 text-xl"><a href="/register">Register</a></li>
-                        <li class="ml-4 text-xl"><a href="/login">Login</a></li>
+                        <li class="ml-4 text-xl"><a href="/auth/register">Register</a></li>
+                        <li class="ml-4 text-xl"><a href="/auth/login">Login</a></li>
                         <% } %>
                             <li
                                 class="ml-4 text-xl hidden sm:inline lg:inline xl:inline border ring-1 ring-black ring-offset-0 rounded-lg ">
-                                <form action="/search" method="POST">
+                                <form action="/" method="get">
                                     <input class="text-lg pl-3 p-1" type="text" name="search"
                                         placeholder="Search Entire store here..">
                                     <button type="submit"><i class="fa fa-search text-xl pr-2"></i></button>

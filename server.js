@@ -56,6 +56,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(flash());
+
 // Assets
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
@@ -83,10 +84,8 @@ const server = app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);
 });
 
+
 // // Socket
-
-
-
 const io = require("socket.io")(server);
 io.on("connection", (socket) => {
   // Join

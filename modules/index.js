@@ -8,5 +8,6 @@ module.exports = function initModules(app) {
   require("./auth/auth.module")(app, "/auth");
   require("./user/user.module")(app, "/user");
   require("./cart/cart.module")(app, "/cart");
+  require("./order/order.module")(app, "/order");
   require("./home/home.module")(app, "/");
 };
