@@ -15,7 +15,14 @@ module.exports = class BaseService {
   }
 
   async getById(id) {
-    return await this.model.findById(new ObjectId(id));
+    try{
+      const dt = await this.model.findById(new ObjectId(id));
+      return dt
+    }catch(e){
+      // console.error(e)
+      return {}
+    }
+   
   }
 
   async create(product) {

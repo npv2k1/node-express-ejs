@@ -53,7 +53,7 @@ router.post("/register", async (req, res) => {
   );
 
   await userService.create(user);
-  res.send("User created");
+  res.redirect("/auth/login");
 });
 
 module.exports = router;
