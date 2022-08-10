@@ -24,7 +24,7 @@ router.get("/", async (req, res) => {
 router.post("/create", async (req, res) => {
   console.log("req.body", req.body);
   const product = await productService.create(req.body);
-  res.send(product);
+  res.redirect("/");
 });
 
 // router.get("/:id", async (req, res) => {

@@ -15,6 +15,15 @@ class OrderService extends BaseService {
       },
     });
   }
+  async getById(id) {
+    return await Order.findById(id).populate({
+      path: "items",
+      populate: {
+        path: "product",
+        model: "Product",
+      },
+    });
+  }
 }
 
 module.exports = new OrderService();

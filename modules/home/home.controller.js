@@ -11,7 +11,8 @@ router.get("/", async (req, res) => {
   }
   console.log("search", search);
   const products = await productService.find(search);
-  return res.render("home", { products: products });
+
+  return res.render("home", { products: products});
 });
 
 module.exports = router;

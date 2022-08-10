@@ -1,6 +1,10 @@
 const express = require("express");
+const auth = require("../../common/middlewares/auth");
 const cartService = require("../cart/cart.service");
 const router = express.Router();
+
+
+router.use(auth)
 
 const orderService = require("./order.service");
 
@@ -10,8 +14,9 @@ router.get("/", async (req, res) => {
 });
 router.get("/:id", async (req, res) => {
   console.log("id", req.params.id);
-  const order = await orderService.getById(req.params.id);
-  return res.render("orderdetail", { order: order });
+  const order = await orderService.getById(req.params.id)
+  console.log("order",order)
+  return res.render("orderdetail", { order: order })
 });
 router.post("/", async (req, res) => {
   const carts = await cartService.getByUser(req.user._id);

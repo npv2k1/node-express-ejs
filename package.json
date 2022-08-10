@@ -9,6 +9,7 @@
     "serve": "node server.js",
     "dev": "nodemon server.js",
     "development": "mix",
+    "start:dev": "nodemon server.js --ext ejs,js,css,html,jpg,png,scss --ignore public",
     "watch": "npx mix watch",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
@@ -36,7 +37,9 @@
     "stripe": "^8.118.0"
   },
   "devDependencies": {
+    "connect-livereload": "^0.6.1",
     "laravel-mix": "^6.0.31",
+    "livereload": "^0.9.3",
     "nodemon": "^2.0.4",
     "resolve-url-loader": "^3.1.0",
     "sass": "^1.26.9",

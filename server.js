@@ -12,6 +12,23 @@ const MongoDbStore = require("connect-mongo");
 const passport = require("passport");
 const Emitter = require("events");
 
+const livereload = require("livereload");
+const connectLivereload = require("connect-livereload");
+
+// open livereload high port and start to watch public directory for changes
+const liveReloadServer = livereload.createServer();
+liveReloadServer.watch(path.join(__dirname, "public"));
+
+// ping browser on Express boot, once browser has reconnected and handshaken
+liveReloadServer.server.once("connection", () => {
+  setTimeout(() => {
+    liveReloadServer.refresh("/");
+  }, 100);
+});
+app.use(connectLivereload());
+
+
+
 // Database connection
 let url = process.env.MONGO_CONNECTION_URL;
 mongoose
@@ -73,31 +90,18 @@ app.use(expressLayout);
 app.set("views", path.join(__dirname, "/resources/views"));
 app.set("view engine", "ejs");
 
-require("./routes/web")(app);
 require("./modules")(app);
 
 app.use((req, res) => {
   res.status(404).render("errors/404");
 });
 
+
+
+
+
 const server = app.listen(PORT, () => {
   console.log(`Listening on port http://localhost:${PORT}`);
 });
 
 
-// // Socket
-const io = require("socket.io")(server);
-io.on("connection", (socket) => {
-  // Join
-  socket.on("join", (orderId) => {
-    socket.join(orderId);
-  });
-});
-
-eventEmitter.on("orderUpdated", (data) => {
-  io.to(`order_${data.id}`).emit("orderUpdated", data);
-});
-
-eventEmitter.on("orderPlaced", (data) => {
-  io.to("adminRoom").emit("orderPlaced", data);
-});

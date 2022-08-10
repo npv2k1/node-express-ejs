@@ -1,29 +1,32 @@
-
 <section class="menu container mx-auto py-8">
-    <h1 class="text-xl font-bold mb-8"><%= type%> Plants</h1>
+    <h1 class="text-xl font-bold mb-8">
+        <%= type%> Plants
+    </h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 col-gap-12 row-gap-16">
         <% plants.forEach(function(plant) { %>
-        <div class="w-full md:w-64 mb-4">
-            <!-- <img class="h-64 mb-4 mx-auto" src="/img/<%= plant.image %>.webp" alt=""> -->
+            <div class="w-full md:w-64 mb-4">
+                <!-- <img class="h-64 mb-4 mx-auto" src="/img/<%= plant.image %>.webp" alt=""> -->
 
-            <a href="/specificPlant/<%= plant.name %>">
-                <img class="h-64 mb-4 mx-auto" src="/img/<%= plant.image %>.webp" alt="">
-            </a>
+                <a href="/specificPlant/<%= plant.name %>">
+                    <img class="h-64 mb-4 mx-auto" src="/img/<%= plant.image %>.webp" alt="">
+                </a>
 
-            <div class="text-center">
-                <h2 class="mb-4 text-lg"><%= plant.name %></h2>
-                <!-- <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= plant.size %></span> -->
-                <div class="flex items-center justify-around mt-6">
-                    <span class="font-bold text-lg">₹<%= plant.price %></span>
-                    <button data-pizza="<%= JSON.stringify(plant) %>"
-                        class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                        <span>+</span>
-                        <span class="ml-4">Add</span>
-                    </button>
+                <div class="text-center">
+                    <h2 class="mb-4 text-lg">
+                        <%= plant.name %>
+                    </h2>
+                    <!-- <span class="size py-1 px-4 rounded-full uppercase text-xs"><%= plant.size %></span> -->
+                    <div class="flex items-center justify-around mt-6">
+                        <span class="font-bold text-lg">đ<%= plant.price %></span>
+                        <button data-pizza="<%= JSON.stringify(plant) %>"
+                            class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <% }) %>
+            <% }) %>
 
     </div>
 </section>

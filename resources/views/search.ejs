@@ -1,27 +1,31 @@
 <section class="container flex m-auto flex-col">
     <% plants.forEach(function(plant) { %>
-    <div class="plant-container flex flex-col sm:flex-row md:flex-row lg:flex-row" >
-        <div class="imgDiv lg:w-1/4 md:w-1/4 flex flex-col justify-center items-center">
-            <img class="h-64" src="/img/<%= plant.image %>.webp" alt="">
-        </div>
-        <div class="description p-16 lg:w-3/4 md:w-3/4">
-            <p class="text-xl mb-4 font-bold text-center"><%= plant.name %></p>
-            <p class="text-justify"><%= plant.description %> </p>
-            <div class="flex items-center justify-around mt-6">
-                <span class="font-bold text-lg">₹<%= plant.price %></span>
-                <button data-pizza="<%= JSON.stringify(plant) %>"
-                    class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                    <span>+</span>
-                    <span class="ml-4">Add</span>
-                </button>
+        <div class="plant-container flex flex-col sm:flex-row md:flex-row lg:flex-row">
+            <div class="imgDiv lg:w-1/4 md:w-1/4 flex flex-col justify-center items-center">
+                <img class="h-64" src="/img/<%= plant.image %>.webp" alt="">
+            </div>
+            <div class="description p-16 lg:w-3/4 md:w-3/4">
+                <p class="text-xl mb-4 font-bold text-center">
+                    <%= plant.name %>
+                </p>
+                <p class="text-justify">
+                    <%= plant.description %>
+                </p>
+                <div class="flex items-center justify-around mt-6">
+                    <span class="font-bold text-lg">đ<%= plant.price %></span>
+                    <button data-pizza="<%= JSON.stringify(plant) %>"
+                        class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                        <span>+</span>
+                        <span class="ml-4">Add</span>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <hr>
-    <% }) %>
+        <hr>
+        <% }) %>
 
 
-    
 
-    
+
+
 </section>
